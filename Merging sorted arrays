@@ -1,0 +1,27 @@
+/*Given two sorted arrays, nums1 and nums2, merge the two while keeping the answer within nums1.
+The final array must be sorted in increasing order. nums1 is given enough space for nums1 and nums2.
+The integers m and n dictate the number of elements in nums1 and nums2, respectively.*/
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int last = m + n - 1; 
+        while(m > 0 && n > 0) {
+            if(nums1[m - 1] > nums2[n - 1]) {
+                nums1[last] = nums1[m - 1];
+                m - 1;
+            }
+            else{
+                nums1[last] = nums2[m - 1];
+                n - 1;
+            }
+            last - 1;
+        }
+        while (n > 0) {
+            nums1[last] = nums2[n - 1];
+            n, last = n-1, last-1;
+        }
+
+    
+    }
+};
